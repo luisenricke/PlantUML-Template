@@ -20,29 +20,51 @@ skinparam defaultTextAlignment center
 !endfunction
 
 ' relations
-!unquoted function association($first, $second, $lineSpacing = "-", $swap ="false")
-    !if ( checkCharacters("association",$lineSpacing) == "true" )
+!unquoted function association($first, $second, $line = "-", $swap ="false")
+    !if ( checkCharactersAssociation($line) == "true" )
         !assert %false() : "The only recognized character is: -"
     !endif
     !if ((%not($swap == "true")) && (%not($swap == "false")))
         !assert %false() : "Invalid swap argument"
     !endif
     !if ($swap=="false")
-        $first $lineSpacing $second
+        $first $line $second
     !endif
     !if ($swap=="true")
-        $second $lineSpacing $first
+        $second $line $first
     !endif
 !endfunction
 
-' Check all valid characters in the relationship
-!function checkCharacters($option,$lineCheck)
-    !if ($option == "association")
-        !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
-            !return "true"
-        !else
-            !return "false"
+!unquoted function generalization($father,$child, $line = "<|-", $swap ="false")
+    !if ( checkCharactersGeneralization($line) == "true" )
+        !assert %false() : "The only recognized characters is: <|- or -|>"
+    !endif
+    !if ( (%strpos($line, "-|>") + "" == "-1") && (%strpos($line, "<|-") + "" == "-1") )
+        !assert %false() : "This relation need theses characters: <|- or -|>"
+    !endif
+    !if ((%not($swap == "true")) && (%not($swap == "false")))
+        !assert %false() : "Invalid swap argument"
+    !endif
+    !if ($swap=="false")
+        $father $line $child
+    !endif
+    !if ($swap=="true")
+        $child $line $father
     !endif
 !endfunction
 
+' Fuctions for check valid characters in the relations
+!function checkCharactersAssociation($lineCheck)
+    !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
+        !return "true"
+    !else
+        !return "false"
+!endfunction
+
+!function checkCharactersGeneralization($lineCheck)
+    !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) )
+        !return "true"
+    !else
+        !return "false"
+!endfunction
 @enduml
