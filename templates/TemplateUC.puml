@@ -21,12 +21,13 @@ skinparam defaultTextAlignment center
 
 ' relations
 !unquoted function association($first, $second, $line = "-", $swap ="false")
-    !if ( checkCharactersAssociation($line) == "true" )
+    !if ( checkCharactersExceptSimpleLine($line) == "true" )
         !assert %false() : "The only recognized character is: -"
     !endif
     !if ((%not($swap == "true")) && (%not($swap == "false")))
         !assert %false() : "Invalid swap argument"
     !endif
+    
     !if ($swap=="false")
         $first $line $second
     !endif
@@ -35,36 +36,41 @@ skinparam defaultTextAlignment center
     !endif
 !endfunction
 
-!unquoted function generalization($father,$child, $line = "<|-", $swap ="false")
-    !if ( checkCharactersGeneralization($line) == "true" )
-        !assert %false() : "The only recognized characters is: <|- or -|>"
+!unquoted function generalization($father,$child, $line = "-", $swap ="false", $whosTheFather=1)
+    !if ( checkCharactersExceptSimpleLine($line) == "true" )
+        !assert %false() : "The only recognized characters is: -"
     !endif
-    !if ( (%strpos($line, "-|>") + "" == "-1") && (%strpos($line, "<|-") + "" == "-1") )
-        !assert %false() : "This relation need theses characters: <|- or -|>"
+    !if ((%not($whosTheFather == 1)) && (%not($whosTheFather == 2)))
+        !assert %false() : "Invalid father selection argument"
     !endif
     !if ((%not($swap == "true")) && (%not($swap == "false")))
         !assert %false() : "Invalid swap argument"
     !endif
-    !if ($swap=="false")
-        $father $line $child
+
+    !if ($whosTheFather==1)
+        !if ($swap=="false")
+            $father <|$line $child
+        !endif
+        !if ($swap=="true")
+            $child $line|> $father
+        !endif
     !endif
-    !if ($swap=="true")
-        $child $line $father
+    !if ($whosTheFather==2)
+        !if ($swap=="false")
+            $father $line|> $child
+        !endif
+        !if ($swap=="true")
+            $child <|$line $father
+        !endif
     !endif
 !endfunction
 
 ' Fuctions for check valid characters in the relations
-!function checkCharactersAssociation($lineCheck)
+!function checkCharactersExceptSimpleLine($lineCheck)
     !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
         !return "true"
     !else
         !return "false"
 !endfunction
 
-!function checkCharactersGeneralization($lineCheck)
-    !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) )
-        !return "true"
-    !else
-        !return "false"
-!endfunction
 @enduml
