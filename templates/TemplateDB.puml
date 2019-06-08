@@ -1,0 +1,95 @@
+@startuml TemplateDB
+
+'/ !include C:/path/to/file.puml
+'/ !includeurl link to file
+
+left to right direction
+'skinparam dpi 300
+skinparam backgroundColor White
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+'Color Scheme of Tables
+skinparam class {
+	BackgroundColor White
+	ArrowColor DimGray
+	BorderColor RoyalBlue
+}
+
+hide methods
+hide stereotypes
+hide circle
+
+' LEGACY FEATURES 
+'/ !define primary_key(x) <u><color:yellow><&key></color><color:black> x</color></u>
+'/ !define foreign_key(x) <color:FireBrick><&key></color><color:black> x</color>
+'/ !define unique(x) <&underline> x
+'/ !define not_null(y) <&x> y
+
+'FIXME: Convert this delcaration in funtion or other valid form
+!define Table(name) class name 
+
+!unquoted function primary_key($var)
+!return "<u><color:yellow><&key></color><color:black> "+ $var+ "</color></u>"
+!endfunction
+
+!unquoted function foreign_key($var)
+!return "<color:FireBrick><&key></color><color:black> "+ $var +"</color>"
+!endfunction
+
+!unquoted function unique($var)
+!return "<&underline> "+ $var
+!endfunction
+
+!unquoted function null($var)
+!return "<&badge> "+ $var
+!endfunction
+
+!unquoted function fk_n($var)
+!return foreign_key(null($var))
+!endfunction
+
+'TODO: Create function of relations
+'table
+'Table(name){
+'	field : type
+'}
+
+'relation
+
+' zero or one
+'A |o--o| B
+
+' exactly one
+'C ||--|| D
+
+' zero or many
+'E }o--o{ F
+
+' one or many
+'G }|--|{ H
+
+'Example
+'Table(GroupX) { 
+'	primary_key(idGroupX) : int
+'	name : varchar[32]
+'}
+
+'Table(GroupY) {
+'	primary_key(idGroupY) : int
+'	name : varchar[32]
+'}
+
+'Table(GroupZ){
+'	foreign_key(idGroupX) : int
+'	foreign_key(idGroupY) : int
+'}
+
+'GroupX }|--|{ GroupY
+'(GroupX, GroupY) . GroupZ
+
+' Reference: 
+' http://plantuml.com/preprocessing
+' https://gist.github.com/QuantumGhost/0955a45383a0b6c0bc24f9654b3cb561
+
+@enduml

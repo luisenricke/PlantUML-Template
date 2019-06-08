@@ -1,0 +1,32 @@
+@startuml TemplateUC
+
+/'SetUp'/
+left to right direction
+skinparam dpi 300
+skinparam monochrome true
+skinparam backgroundColor transparent
+skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+/' actors '/
+!unquoted function actor($name,$var)
+    actor :$name: as $var
+!endfunction
+
+/'relations '/
+!unquoted function uc($name,$var)
+    usecase ($name) as $var
+!endfunction
+
+!unquoted function simple($first,$second)
+    $first -- $second
+!endfunction
+
+
+!unquoted function include($first,$second,$space=1,$direction=0)
+!return "extend :"+$first+ ".>" + $second + ": as "+ $var
+!endfunction
+
+/' Extends: UC2 .> UC3  : \t\t\textends '/
+
+@enduml
