@@ -4,13 +4,14 @@
 '/ !includeurl link to file
 
 left to right direction
+'top to bottom direction
 'skinparam dpi 300
 skinparam monochrome true
 skinparam backgroundColor transparent
 skinparam packageStyle rectangle
 skinparam defaultTextAlignment center
 
-' variables
+' declarations
 !unquoted function actor( $name, $var )
     actor :$name: as $var
 !endfunction
@@ -112,6 +113,58 @@ skinparam defaultTextAlignment center
             !endif
             !if ( $swap == "true" )
                 $second $line> $first : \t\t\tinclude
+            !endif
+        !endif
+    !endif
+!endfunction
+
+!unquoted function extend( $first, $second, $line = ".", $swap = "false", $whoStarts = 2, $needSpace = "false" )
+    !if ( checkCharactersExceptDot($line) == "true" )
+        !assert %false() : "The only recognized characters is: ."
+    !endif
+    !if ( (%not( $whoStarts == 1 )) && (%not( $whoStarts == 2 )) )
+        !assert %false() : "Invalid include argument"
+    !endif
+    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
+        !assert %false() : "Invalid swap argument"
+    !endif
+    !if ( (%not( $needSpace == "true")) && (%not( $needSpace == "false" )) )
+        !assert %false() : "Invalid space argument"
+    !endif
+
+    !if ( $needSpace == "false" )
+        !if ( $whoStarts == 1 )
+            !if ( $swap == "false" )
+                $first $line> $second : extend
+            !endif
+            !if ( $swap == "true" )
+                $second <$line $first : extend
+            !endif
+        !endif
+        !if ( $whoStarts == 2 )
+            !if ( $swap == "false" )
+                $first <$line $second : extend
+            !endif
+            !if ( $swap == "true" )
+                $second $line> $first : extend
+            !endif
+        !endif
+    !endif
+    !if ( $needSpace == "true" )
+        !if ( $whoStarts == 1 )
+            !if ( $swap == "false" )
+                $first $line> $second : \t\t\textend
+            !endif
+            !if ( $swap == "true" )
+                $second <$line $first : \t\t\textend
+            !endif
+        !endif
+        !if ( $whoStarts == 2 )
+            !if ( $swap == "false" )
+                $first <$line $second : \t\t\textend
+            !endif
+            !if ( $swap == "true" )
+                $second $line> $first : \t\t\textend
             !endif
         !endif
     !endif
