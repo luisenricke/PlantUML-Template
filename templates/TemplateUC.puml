@@ -65,9 +65,68 @@ skinparam defaultTextAlignment center
     !endif
 !endfunction
 
+!unquoted function include( $first, $second, $line = ".", $swap = "false", $whoStarts = 1, $needSpace = "false" )
+    !if ( checkCharactersExceptDot($line) == "true" )
+        !assert %false() : "The only recognized characters is: ."
+    !endif
+    !if ( (%not( $whoStarts == 1 )) && (%not( $whoStarts == 2 )) )
+        !assert %false() : "Invalid include argument"
+    !endif
+    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
+        !assert %false() : "Invalid swap argument"
+    !endif
+    !if ( (%not( $needSpace == "true")) && (%not( $needSpace == "false" )) )
+        !assert %false() : "Invalid space argument"
+    !endif
+
+    !if ( $needSpace == "false" )
+        !if ( $whoStarts == 1 )
+            !if ( $swap == "false" )
+                $first $line> $second : include
+            !endif
+            !if ( $swap == "true" )
+                $second <$line $first : include
+            !endif
+        !endif
+        !if ( $whoStarts == 2 )
+            !if ( $swap == "false" )
+                $first <$line $second : include
+            !endif
+            !if ( $swap == "true" )
+                $second $line> $first : include
+            !endif
+        !endif
+    !endif
+    !if ( $needSpace == "true" )
+        !if ( $whoStarts == 1 )
+            !if ( $swap == "false" )
+                $first $line> $second : \t\t\tinclude
+            !endif
+            !if ( $swap == "true" )
+                $second <$line $first : \t\t\tinclude
+            !endif
+        !endif
+        !if ( $whoStarts == 2 )
+            !if ( $swap == "false" )
+                $first <$line $second : \t\t\tinclude
+            !endif
+            !if ( $swap == "true" )
+                $second $line> $first : \t\t\tinclude
+            !endif
+        !endif
+    !endif
+!endfunction
+
 ' Fuctions for check valid characters in the relations
 !function checkCharactersExceptSimpleLine($lineCheck)
     !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
+        !return "true"
+    !else
+        !return "false"
+!endfunction
+
+!function checkCharactersExceptDot($lineCheck)
+    !if ( (%not(%strpos($lineCheck, "-") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
         !return "true"
     !else
         !return "false"
