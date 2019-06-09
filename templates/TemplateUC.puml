@@ -11,55 +11,55 @@ skinparam packageStyle rectangle
 skinparam defaultTextAlignment center
 
 ' variables
-!unquoted function actor($name,$var)
+!unquoted function actor( $name, $var )
     actor :$name: as $var
 !endfunction
 
-!unquoted function uc($name,$var)
+!unquoted function uc( $name, $var )
     usecase ($name) as $var
 !endfunction
 
 ' relations
-!unquoted function association($first, $second, $line = "-", $swap ="false")
+!unquoted function association( $first, $second, $line = "-", $swap = "false" )
     !if ( checkCharactersExceptSimpleLine($line) == "true" )
         !assert %false() : "The only recognized character is: -"
     !endif
-    !if ((%not($swap == "true")) && (%not($swap == "false")))
+    !if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
         !assert %false() : "Invalid swap argument"
     !endif
-    
-    !if ($swap=="false")
+
+    !if ($swap =="false")
         $first $line $second
     !endif
-    !if ($swap=="true")
+    !if ($swap =="true")
         $second $line $first
     !endif
 !endfunction
 
-!unquoted function generalization($father,$child, $line = "-", $swap ="false", $whosTheFather=1)
+!unquoted function generalization( $father, $child, $line = "-", $swap = "false", $whosTheFather = 1 )
     !if ( checkCharactersExceptSimpleLine($line) == "true" )
         !assert %false() : "The only recognized characters is: -"
     !endif
-    !if ((%not($whosTheFather == 1)) && (%not($whosTheFather == 2)))
+    !if ( (%not( $whosTheFather == 1 )) && (%not( $whosTheFather == 2 )) )
         !assert %false() : "Invalid father selection argument"
     !endif
-    !if ((%not($swap == "true")) && (%not($swap == "false")))
+    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
         !assert %false() : "Invalid swap argument"
     !endif
 
-    !if ($whosTheFather==1)
-        !if ($swap=="false")
+    !if ( $whosTheFather == 1 )
+        !if ( $swap == "false" )
             $father <|$line $child
         !endif
-        !if ($swap=="true")
+        !if ( $swap == "true" )
             $child $line|> $father
         !endif
     !endif
-    !if ($whosTheFather==2)
-        !if ($swap=="false")
+    !if ( $whosTheFather == 2 )
+        !if ( $swap == "false" )
             $father $line|> $child
         !endif
-        !if ($swap=="true")
+        !if ( $swap == "true" )
             $child <|$line $father
         !endif
     !endif
