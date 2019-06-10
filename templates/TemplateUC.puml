@@ -6,19 +6,40 @@
 left to right direction
 'top to bottom direction
 'skinparam dpi 300
-'skinparam monochrome true
 'skinparam backgroundColor transparent
 skinparam packageStyle rectangle
 skinparam defaultTextAlignment cent1er
+'skinparam shadowing false
+
+skinparam usecase {
+    BackgroundColor White
+	BorderColor RoyalBlue
+    ArrowColor Black
+}
+
+skinparam actor {
+    BackgroundColor White
+    
+    BorderColor RoyalBlue
+    BorderColor<<primary>> #FF2C24
+    BorderColor<<secondary>> #FF9924
+}
 
 hide stereotype 
 
-' TODO: Make color scheme for primary and secondary actors
-' TODO: Make color scheme for uc and actors
+'TODO: Make function to change color to new user and uc with stereotypes
 
 ' declarations
 !unquoted function actor( $name, $var, $type = "normal" )
+    !if ( $type == "normal")
         actor :$name: as $var
+    !endif
+    !if ($type == "primary")
+        actor :$name: as $var <<primary>>
+    !endif
+    !if ($type == "secondary")
+        actor :$name: as $var <<secondary>>
+    !endif
 !endfunction
 
 !unquoted function uc( $name, $var )
