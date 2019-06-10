@@ -6,14 +6,19 @@
 left to right direction
 'top to bottom direction
 'skinparam dpi 300
-skinparam monochrome true
-skinparam backgroundColor transparent
+'skinparam monochrome true
+'skinparam backgroundColor transparent
 skinparam packageStyle rectangle
-skinparam defaultTextAlignment center
+skinparam defaultTextAlignment cent1er
+
+hide stereotype 
+
+' TODO: Make color scheme for primary and secondary actors
+' TODO: Make color scheme for uc and actors
 
 ' declarations
-!unquoted function actor( $name, $var )
-    actor :$name: as $var
+!unquoted function actor( $name, $var, $type = "normal" )
+        actor :$name: as $var
 !endfunction
 
 !unquoted function uc( $name, $var )
