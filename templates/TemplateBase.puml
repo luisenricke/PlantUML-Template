@@ -1,0 +1,98 @@
+@startuml Base
+
+'/ !include C:/path/to/file.puml
+'/ !includeurl link to file
+
+left to right direction
+
+!startsub BasicSettings
+    skinparam defaultTextAlignment cent1er
+    skinparam shadowing true
+    skinparam packageStyle Frame
+    'Options: small-96, 120-medium, 144-big, 300-hd
+    skinparam dpi 300
+    
+    left to right direction
+
+    !unquoted function setDirection( $direction )
+        !if ( (%not( $direction == "vertical" )) && (%not( $direction == "horizontal" )) )
+            !assert %false() : "Invalid direction argument"
+        !endif 
+        !if ( $direction == "vertical" )
+            top to bottom direction
+        !endif
+
+        !if ( $direction == "horizontal" )
+            left to right direction
+        !endif
+    !endfunction
+
+    'Options: Name or HEX number for the color
+    !unquoted function setBackgroundColor( $color )
+        skinparam backgroundColor $color
+    !endfunction
+
+    !unquoted function hasShadows( $isShadow )
+        !if ( (%not( $isShadow == "true" )) && (%not( $isShadow == "false" )) )
+            !assert %false() : "Invalid direction argument"
+        !endif 
+        !if ( $isShadow == "true" )
+            skinparam shadowing true
+        !endif
+        !if ( $isShadow == "false" )
+            skinparam shadowing false
+        !endif
+    !endfunction
+!endsub
+
+!startsub PackageSettings
+    /'Options: Node, Rectangle, Folder, Frame, Cloud, Database'/
+    skinparam packageStyle Frame
+    !unquoted function setPackageStyle( $package )
+        !if ( (%not( $package == 1 )) && (%not( $package == 2 )) && (%not( $package == 3 )) && (%not( $package == 4 )) && (%not( $package == 5 )) && (%not( $package == 6 )) )
+            !assert %false() : "Invalid direction argument"
+        !endif 
+
+        !if ( $package == 1 )
+            skinparam packageStyle Node
+        !endif
+        !if ( $package == 2 )
+            skinparam packageStyle Rectangle
+        !endif
+        !if ( $package == 3 )
+            skinparam packageStyle Folder
+        !endif
+        !if ( $package == 4 )
+            skinparam packageStyle Frame
+        !endif
+        !if ( $package == 5 )
+            skinparam packageStyle Cloud
+        !endif
+        !if ( $package == 6 )
+            skinparam packageStyle Database
+        !endif
+        
+    !endfunction
+!endsub
+
+!startsub CheckerCharacters
+    !function checkCharactersExceptSimpleLine($lineCheck)
+        !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
+            !return "true"
+        !else
+            !return "false"
+    !endfunction
+
+    !function checkCharactersExceptDot($lineCheck)
+        !if ( (%not(%strpos($lineCheck, "-") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
+            !return "true"
+        !else
+            !return "false"
+    !endfunction
+!endsub
+
+' Reference: 
+' http://plantuml.com/preprocessing
+' https://gist.github.com/QuantumGhost/0955a45383a0b6c0bc24f9654b3cb561
+
+@enduml
