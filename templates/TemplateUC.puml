@@ -1,15 +1,9 @@
 @startuml TemplateUC
+!includesub TemplateBase.puml!BasicSettings
+!includesub TemplateBase.puml!CheckerCharacters
 
-'/ !include C:/path/to/file.puml
-'/ !includeurl link to file
-
-left to right direction
-'top to bottom direction
-'skinparam dpi 300
-'skinparam backgroundColor transparent
-skinparam packageStyle rectangle
-skinparam defaultTextAlignment cent1er
-'skinparam shadowing false
+setDirection(horizontal)
+setBackgroundColor(white)
 
 skinparam usecase {
     BackgroundColor White
@@ -26,8 +20,6 @@ skinparam actor {
 }
 
 hide stereotype 
-
-'TODO: Make function to change color to new user and uc with stereotypes
 
 ' declarations
 !unquoted function actor( $name, $var, $type = "normal" )
@@ -194,21 +186,6 @@ hide stereotype
             !endif
         !endif
     !endif
-!endfunction
-
-' Fuctions for check valid characters in the relations
-!function checkCharactersExceptSimpleLine($lineCheck)
-    !if ( (%not(%strpos($lineCheck, ".") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
-        !return "true"
-    !else
-        !return "false"
-!endfunction
-
-!function checkCharactersExceptDot($lineCheck)
-    !if ( (%not(%strpos($lineCheck, "-") + "" == "-1")) || (%not(%strpos($lineCheck, ">") + "" == "-1")) || (%not(%strpos($lineCheck, "<") + "" == "-1")) || (%not(%strpos($lineCheck, "o") + "" == "-1")) || (%not(%strpos($lineCheck, "*") + "" == "-1")) || (%not(%strpos($lineCheck, "#") + "" == "-1")) || (%not(%strpos($lineCheck, "x") + "" == "-1")) || (%not(%strpos($lineCheck, "}") + "" == "-1")) || (%not(%strpos($lineCheck, "{") + "" == "-1")) || (%not(%strpos($lineCheck, "+") + "" == "-1")) || (%not(%strpos($lineCheck, "^") + "" == "-1")) || (%not(%strpos($lineCheck, "|") + "" == "-1")) )
-        !return "true"
-    !else
-        !return "false"
 !endfunction
 
 @enduml
