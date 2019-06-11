@@ -52,12 +52,7 @@ hide circle
 /'--------------------------- Zero or One to Others --------------------------- '/
 
 !unquoted function oneZToOneZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-      !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable |o%substr("", 0, 1)$line%substr("", 0, 1)o| $secondTable	
@@ -68,12 +63,7 @@ hide circle
 !endfunction
 
 !unquoted function oneZToOne($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable |o%substr("", 0, 1)$line|| $secondTable
@@ -84,12 +74,7 @@ hide circle
 !endfunction
 
 !unquoted function oneZToManyZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable |o%substr("", 0, 1)$line%substr("", 0, 1)o{ $secondTable
@@ -100,12 +85,7 @@ hide circle
 !endfunction
 
 !unquoted function oneZToMany($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
 		$firstTable |o%substr("", 0, 1)$line|{ $secondTable
@@ -119,12 +99,7 @@ hide circle
 /'--------------------------- One  to Others --------------------------- '/
 
 !unquoted function oneToOne($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-      !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable ||$line|| $secondTable
@@ -135,12 +110,7 @@ hide circle
 !endfunction
 
 !unquoted function oneToOneZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable ||$line%substr("", 0, 1)o| $secondTable
@@ -151,12 +121,7 @@ hide circle
 !endfunction
 
 !unquoted function oneToManyZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable ||$line%substr("", 0, 1)o{ $secondTable
@@ -167,12 +132,7 @@ hide circle
 !endfunction
 
 !unquoted function oneToMany($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable ||$line|{ $secondTable
@@ -186,12 +146,7 @@ hide circle
 /'--------------------------- Zero or Many to Others --------------------------- '/
 
 !unquoted function manyZToOneZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable }o%substr("", 0, 1)$line%substr("", 0, 1)o| $secondTable
@@ -202,12 +157,7 @@ hide circle
 !endfunction
 
 !unquoted function manyZToOne($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable }o%substr("", 0, 1)$line|| $secondTable
@@ -218,15 +168,7 @@ hide circle
 !endfunction
 
 !unquoted function manyZToManyZ($firstTable, $secondTable, $thirdTable, $swap = "false", $line = "--", $otherLine = ".")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( checkCharactersExceptDot($otherLine) == "true" )
-    !assert %false() : "The only recognized characters is: ."
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  threeValidArguments($line,$otherLine,$swap)
 
   !if ($swap =="false")
     $firstTable }o%substr("", 0, 1)$line%substr("", 0, 1)o{ $secondTable
@@ -239,15 +181,7 @@ hide circle
 !endfunction
 
 !unquoted function manyZToMany($firstTable, $secondTable, $thirdTable, $swap = "false", $line = "--", $otherLine = ".")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( checkCharactersExceptDot($otherLine) == "true" )
-    !assert %false() : "The only recognized characters is: ."
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  threeValidArguments($line,$otherLine,$swap)
 
   !if ($swap =="false")
     $firstTable }o%substr("", 0, 1)$line|{ $secondTable
@@ -263,12 +197,7 @@ hide circle
 /'--------------------------- Many to Others --------------------------- '/
 
 !unquoted function manyToOne($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable }|$line|| $secondTable
@@ -279,12 +208,7 @@ hide circle
 !endfunction
 
 !unquoted function manyToOneZ($firstTable, $secondTable, $swap = "false", $line = "--")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  twoValidArguments($line, $swap)
 
   !if ($swap =="false")
     $firstTable }|$line%substr("", 0, 1)o| $secondTable
@@ -295,15 +219,7 @@ hide circle
 !endfunction
 
 !unquoted function manyToManyZ($firstTable, $secondTable, $thirdTable, $swap = "false", $line = "--", $otherLine = ".")
-  !if ( checkCharactersExceptSimpleLine($line) == "true" )
-    !assert %false() : "The only recognized characters is: -"
-  !endif
-	!if ( checkCharactersExceptDot($otherLine) == "true" )
-    !assert %false() : "The only recognized characters is: ."
-  !endif
-	!if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-    !assert %false() : "Invalid swap argument"
-  !endif
+  threeValidArguments($line,$otherLine,$swap)
 
   !if ($swap =="false")
     $firstTable }|$line%substr("", 0, 1)o{ $secondTable
@@ -316,6 +232,28 @@ hide circle
 !endfunction
 
 !unquoted function manyToMany($firstTable, $secondTable, $thirdTable, $swap = "false", $line = "--", $otherLine = ".")
+  threeValidArguments($line,$otherLine,$swap)
+  
+  !if ($swap =="false")
+    $firstTable }|$line|{ $secondTable
+    ($firstTable,$secondTable) $otherLine $thirdTable
+  !endif
+  !if ($swap =="true")
+    $secondTable }|$line|{ $firstTable
+    ($secondTable,$firstTable) $otherLine $thirdTable
+  !endif
+!endfunction
+
+!function twoValidArguments($line, $swap)
+  !if ( checkCharactersExceptSimpleLine($line) == "true" )
+      !assert %false() : "The only recognized characters is: -"
+  !endif
+  !if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
+    !assert %false() : "Invalid swap argument"
+  !endif
+!endfunction
+
+!function threeValidArguments($line, $otherLine, $swap)
   !if ( checkCharactersExceptSimpleLine($line) == "true" )
       !assert %false() : "The only recognized characters is: -"
   !endif
@@ -324,15 +262,6 @@ hide circle
   !endif
   !if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
     !assert %false() : "Invalid swap argument"
-  !endif
-
-  !if ($swap =="false")
-    $firstTable }|$line|{ $secondTable
-    ($firstTable,$secondTable) $otherLine $thirdTable
-  !endif
-  !if ($swap =="true")
-    $secondTable }|$line|{ $firstTable
-    ($secondTable,$firstTable) $otherLine $thirdTable
   !endif
 !endfunction
 
