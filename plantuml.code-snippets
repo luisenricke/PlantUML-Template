@@ -1,0 +1,56 @@
+{
+    /* Snippets from UC */
+    "uc": {
+    "scope": "diagram",
+    "prefix": "uc",
+    "body": [
+        "uc(\"${1:name}\", ${2:variable})"
+    ],
+    "description": "Definitions of Use Case"
+    },
+
+    "actor": {
+        "scope": "diagram",
+        "prefix": "actor",
+        "body": [
+            "actor(\"${1:name}\", ${2:variable}, normal)"
+        ],
+        "description": "Definitions of Actor"
+    },
+
+    "generalization": {
+        "scope": "diagram",
+        "prefix": "generalization",
+        "body": [
+            "generalization(${1:father}, ${2:child},-,false,1)"
+        ],
+        "description": "Function generalization"
+    },
+
+    "association": {
+        "scope": "diagram",
+        "prefix": "association",
+        "body": [
+            "association(${1:actor}, ${2:uc},--,false)"
+        ],
+        "description": "Function association"
+    },
+
+    "include": {
+        "scope": "diagram",
+        "prefix": "include",
+        "body": [
+            "include(${1:FirstUC}, ${2:SecondUC},..,false,1,false)"
+        ],
+        "description": "Function include"
+    },
+
+    "extend": {
+        "scope": "diagram",
+        "prefix": "extend",
+        "body": [
+            "extend(${1:FirstUC}, ${2:SecondUC},..,false,2,false)"
+        ],
+        "description": "Function extend"
+    },
+}
