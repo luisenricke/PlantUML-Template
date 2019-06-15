@@ -53,4 +53,205 @@
         ],
         "description": "Function extend"
     },
+
+    /* Snippets from DB */
+    "table": {
+        "scope": "diagram",
+        "prefix": "table-db-plantuml",
+        "body": [
+            "Table(${1:name}){",
+            "\t$2",
+            "}"
+        ],
+        "description": "Definition of table"
+    },
+
+    "primary_key": {
+        "scope": "diagram",
+        "prefix": "primary_key-db-plantuml",
+        "body": [
+            "primary_key(${1:field})"
+        ],
+        "description": "Definition of primary key"
+    },
+
+    "foreign_key": {
+        "scope": "diagram",
+        "prefix": "foreign_key-db-plantuml",
+        "body": [
+            "foreign_key(${1:field})"
+        ],
+        "description": "Definition of foreign key"
+    },
+
+    "unique": {
+        "scope": "diagram",
+        "prefix": "unique-db-plantuml",
+        "body": [
+            "unique(${1:field})"
+        ],
+        "description": "Definition of unique key"
+    },
+
+    "null": {
+        "scope": "diagram",
+        "prefix": "null-db-plantuml",
+        "body": [
+            "null(${1:field})"
+        ],
+        "description": "Definition of null field"
+    },
+
+    "fk_n": {
+        "scope": "diagram",
+        "prefix": "fk_n-db-plantuml",
+        "body": [
+            "fk_n(${1:field})"
+        ],
+        "description": "Definition of foreign key and null field"
+    },
+
+    "oneZToOneZ": {
+        "scope": "diagram",
+        "prefix": "oneZToOneZ-db-plantuml",
+        "body": [
+            "oneZToOneZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or one to zero or one"
+    },
+
+    "oneZToOne": {
+        "scope": "diagram",
+        "prefix": "oneZToOne-db-plantuml",
+        "body": [
+            "oneZToOne(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or one to one"
+    },
+
+    "oneZToManyZ": {
+        "scope": "diagram",
+        "prefix": "oneZToManyZ-db-plantuml",
+        "body": [
+            "oneZToManyZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or one to zero or many"
+    },
+
+    "oneZToMany": {
+        "scope": "diagram",
+        "prefix": "oneZToMany-db-plantuml",
+        "body": [
+            "oneZToMany(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or one to many"
+    },
+
+    "oneToOneZ": {
+        "scope": "diagram",
+        "prefix": "oneToOneZ-db-plantuml",
+        "body": [
+            "oneToOneZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of one to zero or one"
+    },
+
+    "oneToOne": {
+        "scope": "diagram",
+        "prefix": "oneToOne-db-plantuml",
+        "body": [
+            "oneToOne(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of one to one"
+    },
+
+    "oneToManyZ": {
+        "scope": "diagram",
+        "prefix": "oneToManyZ-db-plantuml",
+        "body": [
+            "oneToManyZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of one to zero or many"
+    },
+
+    "oneToMany": {
+        "scope": "diagram",
+        "prefix": "oneToMany-db-plantuml",
+        "body": [
+            "oneToMany(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of one to many"
+    },
+
+    "manyZToOneZ": {
+        "scope": "diagram",
+        "prefix": "manyZToOneZ-db-plantuml",
+        "body": [
+            "manyZToOneZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or many to zero or one"
+    },
+
+    "manyZToOne": {
+        "scope": "diagram",
+        "prefix": "manyZToOne-db-plantuml",
+        "body": [
+            "manyZToOne(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of zero or many to one"
+    },
+
+    "manyZToManyZ": {
+        "scope": "diagram",
+        "prefix": "manyZToManyZ-db-plantuml",
+        "body": [
+            "manyZToManyZ(${1:firstTable}, ${2:secondTable}, ${3:thirdTable}, false, \"--\", \"..\")"
+        ],
+        "description": "Relationship of zero or many to zero or many"
+    },
+
+    "manyZToMany": {
+        "scope": "diagram",
+        "prefix": "manyZToMany-db-plantuml",
+        "body": [
+            "manyZToMany(${1:firstTable}, ${2:secondTable}, ${3:thirdTable}, false, \"--\", \"..\")"
+        ],
+        "description": "Relationship of zero or many to many"
+    },
+
+    "manyToOneZ": {
+        "scope": "diagram",
+        "prefix": "manyToOneZ-db-plantuml",
+        "body": [
+            "manyToOneZ(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of many to zero or one"
+    },
+
+    "manyToOne": {
+        "scope": "diagram",
+        "prefix": "manyToOne-db-plantuml",
+        "body": [
+            "manyToOne(${1:firstTable}, ${2:secondTable}, false, \"--\")"
+        ],
+        "description": "Relationship of many to one"
+    },
+
+    "manyToManyZ": {
+        "scope": "diagram",
+        "prefix": "manyToManyZ-db-plantuml",
+        "body": [
+            "manyToManyZ(${1:firstTable}, ${2:secondTable}, ${3:thirdTable}, false, \"--\", \"..\")"
+        ],
+        "description": "Relationship of many to zero or many"
+    },
+
+    "manyToMany": {
+        "scope": "diagram",
+        "prefix": "manyToMany-db-plantuml",
+        "body": [
+            "manyToMany(${1:firstTable}, ${2:secondTable}, ${3:thirdTable}, false, \"--\", \"..\")"
+        ],
+        "description": "Relationship of many to many"
+    },
 }
