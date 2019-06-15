@@ -1,55 +1,55 @@
 {
     /* Snippets from UC */
     "uc": {
-    "scope": "diagram",
-    "prefix": "uc",
-    "body": [
-        "uc(\"${1:name}\", ${2:variable})"
-    ],
-    "description": "Definitions of Use Case"
+        "scope": "diagram",
+        "prefix": "uc-uc-plantuml",
+        "body": [
+            "uc(\"${1:name}\", ${2:variable})"
+        ],
+        "description": "Definitions of Use Case"
     },
 
     "actor": {
         "scope": "diagram",
-        "prefix": "actor",
+        "prefix": "actor-uc-plantuml",
         "body": [
-            "actor(\"${1:name}\", ${2:variable}, normal)"
+            "actor(\"${1:name}\", ${2:variable}, \"normal\")"
         ],
         "description": "Definitions of Actor"
     },
 
     "generalization": {
         "scope": "diagram",
-        "prefix": "generalization",
+        "prefix": "generalization-uc-plantuml",
         "body": [
-            "generalization(${1:father}, ${2:child},-,false,1)"
+            "generalization(${1:father}, ${2:child}, \"-\", false, 1)"
         ],
         "description": "Function generalization"
     },
 
     "association": {
         "scope": "diagram",
-        "prefix": "association",
+        "prefix": "association-uc-plantuml",
         "body": [
-            "association(${1:actor}, ${2:uc},--,false)"
+            "association(${1:actor}, ${2:uc}, \"--\", false)"
         ],
         "description": "Function association"
     },
 
     "include": {
         "scope": "diagram",
-        "prefix": "include",
+        "prefix": "include-uc-plantuml",
         "body": [
-            "include(${1:FirstUC}, ${2:SecondUC},..,false,1,false)"
+            "include(${1:FirstUC}, ${2:SecondUC}, \"..\", false, 1, false)"
         ],
         "description": "Function include"
     },
 
     "extend": {
         "scope": "diagram",
-        "prefix": "extend",
+        "prefix": "extend-uc-plantuml",
         "body": [
-            "extend(${1:FirstUC}, ${2:SecondUC},..,false,2,false)"
+            "extend(${1:FirstUC}, ${2:SecondUC}, \"..\", false, 2, false)"
         ],
         "description": "Function extend"
     },
