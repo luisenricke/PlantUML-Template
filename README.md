@@ -309,7 +309,7 @@ manyZToOne($firstTable, $secondTable, $swap , $line)
 /'swap: true | false
 /'line: The variable is filled by dashes(-), the more they are the longer the line will be.
 /'otherLine: The variable is filled by dots(.), the more they are the longer the line will be.
-manyZToManyZ($firstTable, $secondTable, $swap , $line, $otherLine)
+manyZToManyZ($firstTable, $secondTable, $thirdTable, $swap , $line, $otherLine)
 ```
 
 - Function of relation "Zero or many to many":
@@ -317,7 +317,7 @@ manyZToManyZ($firstTable, $secondTable, $swap , $line, $otherLine)
 /'swap: true | false
 /'line: The variable is filled by dashes(-), the more they are the longer the line will be.
 /'otherLine: The variable is filled by dots(.), the more they are the longer the line will be.
-oneZToMany($firstTable, $secondTable, $swap , $line, $otherLine)
+manyZToMany($firstTable, $secondTable, $thirdTable, $swap , $line, $otherLine)
 ```
 
 <!-- -->
@@ -341,7 +341,7 @@ manyToOne($firstTable, $secondTable, $swap , $line)
 /'swap: true | false
 /'line: The variable is filled by dashes(-), the more they are the longer the line will be.
 /'otherLine: The variable is filled by dots(.), the more they are the longer the line will be.
-manyToManyZ($firstTable, $secondTable, $swap , $line, $otherLine)
+manyToManyZ($firstTable, $secondTable, $thirdTable, $swap , $line, $otherLine)
 ```
 
 - Function of relation "many to many":
@@ -349,7 +349,7 @@ manyToManyZ($firstTable, $secondTable, $swap , $line, $otherLine)
 /'swap: true | false
 /'line: The variable is filled by dashes(-), the more they are the longer the line will be.
 /'otherLine: The variable is filled by dots(.), the more they are the longer the line will be.
-manyToMany($firstTable, $secondTable, $swap , $line, $otherLine)
+manyToMany($firstTable, $secondTable, $thirdTable, $swap , $line, $otherLine)
 ```
 
 ## Authors <a name = "authors"></a>
