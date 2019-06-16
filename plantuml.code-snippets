@@ -1,4 +1,41 @@
 {
+    /* Snippets from Base */
+    "direction": {
+        "scope": "diagram",
+        "prefix": "setDirection-basic-plantuml",
+        "body": [
+            "setDirection(${1:direction})"
+        ],
+        "description": "Function of direction: horizontal/vertical"
+    },
+
+    "color": {
+        "scope": "diagram",
+        "prefix": "setBackgroundColor-basic-plantuml",
+        "body": [
+            "setBackgroundColor(${1:color})"
+        ],
+        "description": "Function of backgroundColor: HEX/name"
+    },
+
+    "shadow": {
+        "scope": "diagram",
+        "prefix": "hasShadows-basic-plantuml",
+        "body": [
+            "hasShadows(${1:boolean})"
+        ],
+        "description": "Function of shadow"
+    },
+
+    "monochrome": {
+        "scope": "diagram",
+        "prefix": "setMonochrome-basic-plantuml",
+        "body": [
+            "setMonochrome(${1:boolean})"
+        ],
+        "description": "Function of monochrome"
+    },
+
     /* Snippets from UC */
     "uc": {
         "scope": "diagram",
