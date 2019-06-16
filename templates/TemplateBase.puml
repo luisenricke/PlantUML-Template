@@ -36,12 +36,8 @@ left to right direction
         !if ( (%not( $isShadow == "true" )) && (%not( $isShadow == "false" )) )
             !assert %false() : "Invalid direction argument"
         !endif 
-        !if ( $isShadow == "true" )
-            skinparam shadowing true
-        !endif
-        !if ( $isShadow == "false" )
-            skinparam shadowing false
-        !endif
+        
+        skinparam shadowing $isShadow
     !endfunction
 !endsub
 
