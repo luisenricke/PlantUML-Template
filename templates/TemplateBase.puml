@@ -39,6 +39,14 @@ left to right direction
         
         skinparam shadowing $isShadow
     !endfunction
+
+    !unquoted function setMonochrome( $isMonochrome )
+        !if ( (%not( $isMonochrome == "true" )) && (%not( $isMonochrome == "false" )) )
+            !assert %false() : "Invalid monochrome argument"
+        !endif
+        
+        skinparam monochrome $isMonochrome
+    !endfunction
 !endsub
 
 !startsub PackageSettings
