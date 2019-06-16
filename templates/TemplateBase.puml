@@ -6,7 +6,7 @@
 left to right direction
 
 !startsub BasicSettings
-    skinparam defaultTextAlignment cent1er
+    skinparam defaultTextAlignment center
     skinparam shadowing true
     skinparam packageStyle Frame
     'Options: small-96, 120-medium, 144-big, 300-hd
@@ -33,19 +33,19 @@ left to right direction
     !endfunction
 
     !unquoted function hasShadows( $isShadow )
-        !if ( (%not( $isShadow == "true" )) && (%not( $isShadow == "false" )) )
-            !assert %false() : "Invalid direction argument"
-        !endif 
-        
+        checkBooleanVariable($isShadow, "shadow") 
         skinparam shadowing $isShadow
     !endfunction
 
     !unquoted function setMonochrome( $isMonochrome )
-        !if ( (%not( $isMonochrome == "true" )) && (%not( $isMonochrome == "false" )) )
-            !assert %false() : "Invalid monochrome argument"
-        !endif
-        
+        checkBooleanVariable($isMonochrome, "monochrome")
         skinparam monochrome $isMonochrome
+    !endfunction
+
+    !function checkBooleanVariable($var, $name)
+        !if ( (%not( $var == "true" )) && (%not( $var == "false" )) )
+            !assert %false() : "Invalid " + $name + " argument"
+        !endif
     !endfunction
 !endsub
 

@@ -43,9 +43,7 @@ hide stereotype
     !if ( checkCharactersExceptSimpleLine($line) == "true" )
         !assert %false() : "The only recognized character is: -"
     !endif
-    !if ( (%not( $swap == "true" )) && (%not( $swap == "false" )) )
-        !assert %false() : "Invalid swap argument"
-    !endif
+    checkBooleanVariable($swap,"swap")
 
     !if ($swap =="false")
         $first $line $second
@@ -62,9 +60,7 @@ hide stereotype
     !if ( (%not( $whosTheFather == 1 )) && (%not( $whosTheFather == 2 )) )
         !assert %false() : "Invalid father selection argument"
     !endif
-    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
-        !assert %false() : "Invalid swap argument"
-    !endif
+    checkBooleanVariable($swap,"swap")
 
     !if ( $whosTheFather == 1 )
         !if ( $swap == "false" )
@@ -91,12 +87,8 @@ hide stereotype
     !if ( (%not( $whoStarts == 1 )) && (%not( $whoStarts == 2 )) )
         !assert %false() : "Invalid include argument"
     !endif
-    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
-        !assert %false() : "Invalid swap argument"
-    !endif
-    !if ( (%not( $needSpace == "true")) && (%not( $needSpace == "false" )) )
-        !assert %false() : "Invalid space argument"
-    !endif
+    checkBooleanVariable($swap,"swap")
+    checkBooleanVariable($needSpace,"space")
 
     !if ( $needSpace == "false" )
         !if ( $whoStarts == 1 )
@@ -143,12 +135,8 @@ hide stereotype
     !if ( (%not( $whoStarts == 1 )) && (%not( $whoStarts == 2 )) )
         !assert %false() : "Invalid include argument"
     !endif
-    !if ( (%not( $swap == "true")) && (%not( $swap == "false" )) )
-        !assert %false() : "Invalid swap argument"
-    !endif
-    !if ( (%not( $needSpace == "true")) && (%not( $needSpace == "false" )) )
-        !assert %false() : "Invalid space argument"
-    !endif
+    checkBooleanVariable($swap,"swap")
+    checkBooleanVariable($needSpace,"space")
 
     !if ( $needSpace == "false" )
         !if ( $whoStarts == 1 )
